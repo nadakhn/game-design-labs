@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class BlockCoin : MonoBehaviour
 {
+    public AudioClip coinSound;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +21,9 @@ public class BlockCoin : MonoBehaviour
         yield return Move(defaultPosition, animatedPosition);
         yield return Move(animatedPosition, defaultPosition);
 
+        AudioSource.PlayClipAtPoint(coinSound, transform.position);
         Destroy(gameObject);
+
     }
 
     private IEnumerator Move(Vector3 from, Vector3 to)

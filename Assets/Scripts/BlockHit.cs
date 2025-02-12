@@ -7,8 +7,23 @@ public class BlockHit : MonoBehaviour
     public GameObject spawnItem; //rn its just coin
     public int maxHits =-1;
     public Sprite emptyBlock;
+    public Sprite blinkingBlock;
+    private Sprite defaultBlock;
     private bool isAnimating;
+    private bool isBlinking;
+    private SpriteRenderer spriteRenderer;
 
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        defaultBlock = spriteRenderer.sprite;
+
+        if (blinkingBlock != null)
+        {
+            isBlinking = true;
+            StartCoroutine(Blink());
+        }  
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!isAnimating && maxHits!=0 && collision.gameObject.CompareTag("Player"))
@@ -23,8 +38,14 @@ public class BlockHit : MonoBehaviour
 
     private void Hit()
     {
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         maxHits --;
+        if (isBlinking)
+        {
+            isBlinking = false;
+            StopCoroutine(Blink());
+        }
+
         if (maxHits ==0) 
         {
             spriteRenderer.sprite = emptyBlock;
@@ -69,6 +90,18 @@ public class BlockHit : MonoBehaviour
 
         transform.localPosition = to;
 
+    }
+
+    private IEnumerator Blink()
+    {
+        while (isBlinking && maxHits!=0 )
+        {
+            spriteRenderer.sprite = blinkingBlock;
+            yield return new WaitForSeconds(0.25f);
+
+            spriteRenderer.sprite = defaultBlock;
+            yield return new WaitForSeconds(0.25f);
+        }
     }
 
 
