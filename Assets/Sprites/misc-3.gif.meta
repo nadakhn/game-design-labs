@@ -1025,7 +1025,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: misc-3_41
+      name: empty_block
       rect:
         serializedVersion: 2
         x: 373
@@ -2477,7 +2477,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: misc-3_107
+      name: coin
       rect:
         serializedVersion: 2
         x: 427
@@ -12180,6 +12180,8 @@ TextureImporter:
       cloud_white_1: -1256633535
       cloud_white_2: -1187868113
       cloud_white_3: -31165753
+      coin: 73862314
+      empty_block: 670680946
       misc-3_0: -14527161
       misc-3_1: -831060101
       misc-3_10: 570209936
@@ -12187,7 +12189,6 @@ TextureImporter:
       misc-3_101: -1594177490
       misc-3_102: 1188177401
       misc-3_106: 1819098527
-      misc-3_107: 73862314
       misc-3_108: 228759567
       misc-3_109: -336233663
       misc-3_11: -2067289681
@@ -12521,7 +12522,6 @@ TextureImporter:
       misc-3_407: 693682695
       misc-3_408: -97776318
       misc-3_409: 1590944444
-      misc-3_41: 670680946
       misc-3_410: 99073362
       misc-3_411: -1075774548
       misc-3_412: -58215870

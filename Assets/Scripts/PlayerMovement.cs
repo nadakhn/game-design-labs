@@ -17,6 +17,12 @@ public class PlayerMovement : MonoBehaviour
     public JumpOverGoomba jumpOverGoomba;
     public GameObject gameOverScreen;
     public GameObject canvasScore;
+    public Animator marioAnimator;
+    public Transform gameCamera;
+    public AudioSource marioAudio;
+    int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
+
+
 
     // alw called before the first frame update (upon instantiation)
     void Start()
@@ -25,28 +31,39 @@ public class PlayerMovement : MonoBehaviour
         marioBody = GetComponent<Rigidbody2D>();
         marioSprite = GetComponent<SpriteRenderer>();
 
+        // update animator state
+        marioAnimator.SetBool("OnGround", onGroundState);
     }
+
     //called per frame, implement game logic here
     void Update()
     {
         //toggle between mario direction
-        if (Input.GetKeyDown("a") && faceRightState){
-          faceRightState = false;
-          marioSprite.flipX = true;
-      }
+        if (Input.GetKeyDown("a") && faceRightState)
+        {
+            faceRightState = false;
+            marioSprite.flipX = true;
+            if (marioBody.linearVelocity.x > 0.1f)
+                marioAnimator.SetTrigger("onSkid");
+        }
 
-      if (Input.GetKeyDown("d") && !faceRightState){
-          faceRightState = true;
-          marioSprite.flipX = false;
-      }
-
+        if (Input.GetKeyDown("d") && !faceRightState)
+        {
+            faceRightState = true;
+            marioSprite.flipX = false;
+            if (marioBody.linearVelocity.x < -0.1f)
+                marioAnimator.SetTrigger("onSkid");
+        }
+        marioAnimator.SetFloat("xSpeed", Mathf.Abs(marioBody.linearVelocity.x));
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.CompareTag("Ground"))
+        if (((collisionLayerMask & (1 << col.transform.gameObject.layer)) > 0) & !onGroundState) //labels are presented by layermask
         {
             onGroundState = true;
+            // update animator state
+            marioAnimator.SetBool("onGround", onGroundState);
         }
     }
 
@@ -56,15 +73,17 @@ public class PlayerMovement : MonoBehaviour
         // Vector2 movement = new Vector2(moveHorizontal,0);
         // marioBody.AddForce(movement*speed);
 
-        if (Mathf.Abs(moveHorizontal) > 0){
+        if (Mathf.Abs(moveHorizontal) > 0)
+        {
             Vector2 movement = new Vector2(moveHorizontal, 0);
             // check if it doesn't go beyond maxSpeed
             if (marioBody.linearVelocity.magnitude < maxSpeed)
-                    marioBody.AddForce(movement * speed);
+                marioBody.AddForce(movement * speed);
         }
 
         // stop
-        if (Input.GetKeyUp("a") || Input.GetKeyUp("d")){
+        if (Input.GetKeyUp("a") || Input.GetKeyUp("d"))
+        {
             // stop
             marioBody.linearVelocity = Vector2.zero;
         }
@@ -75,18 +94,19 @@ public class PlayerMovement : MonoBehaviour
         {
             marioBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
             onGroundState = false;
+            marioAnimator.SetBool("onGround", onGroundState);
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-      if (other.gameObject.CompareTag("Enemy"))
-      {
-          Debug.Log("Collided with Goomba!");
-          Time.timeScale = 0.0f;
-          canvasScore.SetActive(false); //hide score + restart game on top
-          gameOverScreen.SetActive(true); //game over screen
-      }
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Collided with Goomba!");
+            Time.timeScale = 0.0f;
+            canvasScore.SetActive(false); //hide score + restart game on top
+            gameOverScreen.SetActive(true); //game over screen
+        }
     }
     public void RestartButtonCallback(int input)
     {
@@ -117,5 +137,14 @@ public class PlayerMovement : MonoBehaviour
         // reset score
         jumpOverGoomba.score = 0;
 
+        // reset camera position
+        gameCamera.position = new Vector3(0, 0, -10);
+
+    }
+
+    void PlayJumpSound()
+    {
+        // play jump sound
+        marioAudio.PlayOneShot(marioAudio.clip);
     }
 }

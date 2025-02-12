@@ -233,7 +233,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mario_7
+      name: mario_run_1
       rect:
         serializedVersion: 2
         x: 241
@@ -255,7 +255,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mario_8
+      name: mario_run_2
       rect:
         serializedVersion: 2
         x: 272
@@ -277,7 +277,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mario_9
+      name: mario_run_3
       rect:
         serializedVersion: 2
         x: 300
@@ -299,7 +299,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mario_10
+      name: mario_run_4
       rect:
         serializedVersion: 2
         x: 331
@@ -321,7 +321,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mario_11
+      name: mario_jump
       rect:
         serializedVersion: 2
         x: 359
@@ -497,7 +497,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mario_19
+      name: mario_skid_1
       rect:
         serializedVersion: 2
         x: 210
@@ -519,7 +519,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mario_20
+      name: mario_skid_2
       rect:
         serializedVersion: 2
         x: 241
@@ -541,7 +541,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mario_21
+      name: mario_skid_3
       rect:
         serializedVersion: 2
         x: 271
@@ -563,7 +563,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mario_22
+      name: mario_skid_4
       rect:
         serializedVersion: 2
         x: 301
@@ -629,7 +629,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mario_25
+      name: mario_jump_front
       rect:
         serializedVersion: 2
         x: 390
@@ -2074,8 +2074,6 @@ TextureImporter:
     nameFileIdTable:
       mario_0: 944142626
       mario_1: -891420440
-      mario_10: -1478973383
-      mario_11: 1555234628
       mario_12: -2054776286
       mario_13: 702961222
       mario_14: -1096555198
@@ -2083,14 +2081,9 @@ TextureImporter:
       mario_16: -1830377166
       mario_17: -1770969677
       mario_18: -1586119247
-      mario_19: 2068350650
       mario_2: -1706975187
-      mario_20: 1239038808
-      mario_21: -1195691956
-      mario_22: 1434637433
       mario_23: 1743674094
       mario_24: 611450691
-      mario_25: 925437002
       mario_26: -1852697613
       mario_27: 1962977777
       mario_28: 194243647
@@ -2137,7 +2130,6 @@ TextureImporter:
       mario_67: 1676900038
       mario_68: -177397377
       mario_69: -1774985309
-      mario_7: -1874417402
       mario_70: 605341076
       mario_71: 292239088
       mario_72: -1689857272
@@ -2148,7 +2140,6 @@ TextureImporter:
       mario_77: -141184926
       mario_78: 7842438
       mario_79: 930564854
-      mario_8: 1558212304
       mario_80: 1247766403
       mario_81: -1443997255
       mario_82: -1480084236
@@ -2157,9 +2148,18 @@ TextureImporter:
       mario_85: -1523712996
       mario_86: -1981799936
       mario_87: -1849341915
-      mario_9: 553979796
+      mario_jump: 1555234628
+      mario_jump_front: 925437002
       mario_left: -610707628
       mario_right: -681875674
+      mario_run_1: -1874417402
+      mario_run_2: 1558212304
+      mario_run_3: 553979796
+      mario_run_4: -1478973383
+      mario_skid_1: 2068350650
+      mario_skid_2: 1239038808
+      mario_skid_3: -1195691956
+      mario_skid_4: 1434637433
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
