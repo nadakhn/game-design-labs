@@ -12,7 +12,7 @@ public class EnemyMovement : MonoBehaviour
     private Vector2 velocity;
 
     private Rigidbody2D enemyBody;
-    public Vector3 startPosition = new Vector3(0.0f, 0.0f, 0.0f);
+    private bool isFlattened = false; 
 
     void Start()
     {
@@ -20,6 +20,7 @@ public class EnemyMovement : MonoBehaviour
         // get the starting position
         originalX = transform.position.x;
         ComputeVelocity();
+        Goomba.OnGoombaFlattened += StopMovement;
     }
     void ComputeVelocity()
     {
@@ -27,18 +28,20 @@ public class EnemyMovement : MonoBehaviour
     }
     void Movegoomba()
     {
-        enemyBody.MovePosition(enemyBody.position + velocity * Time.fixedDeltaTime);
+        if (!isFlattened)
+        {
+            enemyBody.MovePosition(enemyBody.position + velocity * Time.fixedDeltaTime);
+        }
     }
 
     void Update()
     {
-        if (Mathf.Abs(enemyBody.position.x - originalX) < maxOffset)
-        {// move goomba
+        if (!isFlattened && Mathf.Abs(enemyBody.position.x - originalX) < maxOffset)
+        {
             Movegoomba();
         }
-        else
+        else if (!isFlattened)
         {
-            // change direction
             moveRight *= -1;
             ComputeVelocity();
             Movegoomba();
@@ -48,5 +51,21 @@ public class EnemyMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(other.gameObject.name);
+    }
+
+    void OnDestroy()
+    {
+        Goomba.OnGoombaFlattened -= StopMovement;
+    }
+
+
+
+    private void StopMovement(GameObject goomba)
+    {
+        if (goomba == gameObject) // Make sure it's the correct Goomba
+        {
+            isFlattened = true;
+            enemyBody.linearVelocity = Vector2.zero; // Stop any movement immediately
+        }
     }
 }

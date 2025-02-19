@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "game-design-lab_latest.sln"
+    "dotnet.defaultSolution": "game-design-labs_v7.sln"
 }

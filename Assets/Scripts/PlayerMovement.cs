@@ -182,13 +182,15 @@ public class PlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            Debug.Log("Collided with Goomba!");
-            Time.timeScale = 0.0f;
-            canvasScore.SetActive(false); //hide score + restart game on top
-            gameOverScreen.SetActive(true); //game over screen
-        }
+        // if (other.gameObject.CompareTag("Enemy"))
+        // {
+        //     Debug.Log("Collided with Goomba!");
+        //     Time.timeScale = 0.0f;
+        //     canvasScore.SetActive(false); //hide score + restart game on top
+        //     gameOverScreen.SetActive(true); //game over screen
+        // }
+
+        //nada TODO: game over only if frm the sides!!
     }
     public void RestartButtonCallback(int input)
     {
