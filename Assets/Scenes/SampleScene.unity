@@ -3063,8 +3063,8 @@ GameObject:
   - component: {fileID: 1096675230}
   - component: {fileID: 1096675231}
   - component: {fileID: 1096675232}
-  - component: {fileID: 1096675233}
   - component: {fileID: 1096675234}
+  - component: {fileID: 1096675233}
   m_Layer: 0
   m_Name: Mario
   m_TagString: Player
@@ -3293,7 +3293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: d571816a6860147b4b9b9f1b8f84718c, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -3304,7 +3304,31 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 042637c41146c401c9e65936d54b4329, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 96247785-13bd-41b8-b204-01f087d877fc
+    m_ActionName: 'gameplay/move[/Keyboard/a,/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2f09e841-fe40-4f65-990f-ca93a7ee60d0
+    m_ActionName: 'gameplay/jump[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f38b3b8e-fe31-4b3b-a009-3aaf4209ba19
+    m_ActionName: 'gameplay/jumphold[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: gameplay

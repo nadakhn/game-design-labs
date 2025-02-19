@@ -1,32 +1,47 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class ActionManager : MonoBehaviour
 {
-    // Called when the jump button is pressed
-    public void OnJump()
+    public void OnJumpHoldAction(InputAction.CallbackContext context)
     {
-        Debug.Log("OnJump called");
+        if (context.started)
+            Debug.Log("JumpHold was started");
+        else if (context.performed)
+        {
+            Debug.Log("JumpHold was performed");
+        }
+        else if (context.canceled)
+            Debug.Log("JumpHold was cancelled");
     }
 
-    // Called when movement input changes (e.g., pressing or releasing a movement key/stick)
-    public void OnMove(InputValue input)
+    // called twice, when pressed and unpressed
+    public void OnJumpAction(InputAction.CallbackContext context)
     {
-          if (input.Get() == null)
+        if (context.started)
+            Debug.Log("Jump was started");
+        else if (context.performed)
         {
-            Debug.Log("Move released");
+            Debug.Log("Jump was performed");
         }
-        else
-        {
-            Debug.Log($"Move triggered, with value {input.Get()}"); // will return null when released
-        }
-        // TODO
+        else if (context.canceled)
+            Debug.Log("Jump was cancelled");
+
     }
 
-    // Called when holding the jump button (e.g., for charge jumps)
-    public void OnJumpHold(InputValue value)
+    // called twice, when pressed and unpressed
+    public void OnMoveAction(InputAction.CallbackContext context)
     {
-        Debug.Log($"OnJumpHold performed with value {value.Get()}");
-
+        if (context.started)
+        {
+            Debug.Log("move started");
+            float move = context.ReadValue<float>();
+            Debug.Log($"move value: {move}"); // will return null when not pressed
+        }
+        if (context.canceled)
+        {
+            Debug.Log("move stopped");
+        }
     }
 }
