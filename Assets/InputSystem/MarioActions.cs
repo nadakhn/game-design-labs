@@ -121,17 +121,6 @@ public partial class @MarioActions: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""6d8870c5-f289-448c-97a4-1f872e03facd"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""1D Axis"",
                     ""id"": ""1b311dad-cf72-4fcf-a58e-4ba3b27d4d68"",
                     ""path"": ""1DAxis"",
@@ -156,7 +145,7 @@ public partial class @MarioActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""22c27b39-f415-4da5-98b8-0e2c93584d6c"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard"",
