@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource marioAudio;
     int collisionLayerMask = (1 << 3) | (1 << 6) | (1 << 7);
     private bool alive = true;
+    private bool onGround = true;
     private bool moving = false;
     private bool jumpedState = false;
 

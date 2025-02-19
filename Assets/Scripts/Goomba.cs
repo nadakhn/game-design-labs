@@ -8,6 +8,8 @@ public class Goomba : MonoBehaviour
 
 
     public Sprite flatSprite;
+    public AudioSource stompGoomba;
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -30,6 +32,13 @@ public class Goomba : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         GetComponent<SpriteRenderer>().sprite = flatSprite; // when flatten, change to flatsprite
         Destroy(gameObject, 0.5f);
+        PlayStompSound();
+    }
+
+    void PlayStompSound()
+    {
+        // play stomp sound
+        stompGoomba.PlayOneShot(stompGoomba.clip);
     }
 
 }
